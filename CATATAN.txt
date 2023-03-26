@@ -1,0 +1,104 @@
+- alasan pakai nuxtjs 2 karena nuxt auth, dotenv blm support versi 3
+- npm init nuxt-app <project-name> // pakai versi 2
+- di package json hapus @nuxt/tailwind
+- npm uninstall tailwind
+- nuxt config.js hapus nuxt/tailwind
+
+=============================================================================================================================
+
+- debug
+  npm run dev
+- production
+  npm run build
+  npm run start
+- localhost:3000
+- npm install --save-exact @nuxtjs/auth-next
+- npm install @nuxtjs/axios
+- npm install --save-dev @nuxtjs/dotenv
+
+=============================================================================================================================
+
+- asyncData => fitur get data before component has loaded
+            => hanya dapat berjalan di /pages
+- fetch     => fitur get data ini bisa berjalan di pages dan component
+
+=============================================================================================================================
+
+- get data api tanpa pakai statemanagement, maka hanya bisa diakses dihalaman itu saja
+- fungsi utama dari statemanagement adalah:
+            => data bisa dipakai setiap pages
+            => data seperti user yg senantiasa dipakai bisa kita tangani
+- Vuex => digunakan utk access data global seperti: user, auth.
+- computed -> fungsi yg menjadi sebuah variable (var sblm ditampilkan dia ada kondisi tertentu maka nya dibungkus dgn fungsi)
+
+- sebaiknya uninstall tailwind dan install manual dengan cara mengikuti cara berikut:
+https://tailwindcss.com/docs/guides/nuxtjs#2
+- cari template di internet
+- setup bagian main.css sesuaikan dengan tailwind.css
+- setup tailwind.config.js kecuali content jangan diubah
+- setup assets
+- setup halaman
+
+=============================================================================================================================
+
+- directory assets dengan directory static itu bedanya di assets gambar akan dikompilasi menjadi lebih kecil, namun krn dikompilasi terlebih dahulu maka loading menjadi lebih lama. cuma nanti setelah dikompilasi gambar menjadi kecil dan lebih cepat. silahkan cek: nuxtjs doc
+- aturan html di Vue
+<template>
+  <section>...</section>
+</template>
+
+jika ada 2 section
+<template>
+  <div>
+    <section></section>
+    <section></section>
+  </div>
+</template>
+
+=============================================================================================================================
+
+- lihat route di .nuxt/route.js
+// {
+//     path: "/employees/:id/tasks/:id",
+//     component: _7cd14ad0,
+//     name: "employees-id-tasks-id"
+//   }
+
+==============================================================================================================================
+
+- testing nuxt auth
+https://auth.nuxtjs.org/schemes/local/
+
+==============================================================================================================================
+
+- @submit-prevent
+  on submit + handle preventDefault(reload)
+
+- axios baseURL, namun kalau ada env API_URL maka yg dipakai yg di env
+https://axios.nuxtjs.org/options
+
+==============================================================================================================================
+- Vuex
+- state di Vuex store disimpan di dalam memori aplikasi web. Vuex menyimpan state di dalam sebuah objek
+  JavaScript yang disebut dengan "store".
+- Store dapat diakses dari berbagai komponen di dalam aplikasi menggunakan "mapState" atau "computed" dalam Vue.js
+- Dalam store, state dapat diperbarui menggunakan "mutations" dan "actions".
+- Penting untuk diingat bahwa state Vuex hanya ada selama aplikasi web berjalan.
+- Jika aplikasi di-refresh atau di-reload, state akan di-reset ke nilai awal yang telah ditentukan di dalam store.
+  Oleh karena itu, jika aplikasi memerlukan penyimpanan yang lebih permanen,
+  solusinya adalah dengan menggunakan database atau penyimpanan lokal seperti localStorage atau sessionStorage.
+
+==============================================================================================================================
+
+- tujuan dari state management
+- menghindari banyak reload (flutter)
+- memudahkan page1.a tukar data dengan page2.a
+- penyimpanan sementara sifatnya global (bisa diakses dimana saja)
+
+=============================================================================================================================
+
+- menerapkan skeleton loading
+- consume api employees
+  pada saat fetch pending kita buat style tailwind yg sama seperti container dan items yg ditampilkan pada v-else.
+  style nya tinggal kita sesuaikan seperti skeleton style
+=============================================================================================================================
